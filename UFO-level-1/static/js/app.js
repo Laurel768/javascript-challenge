@@ -47,18 +47,20 @@ data.forEach((sighting) => {
    //use input to filter data 
     var filteredData = data.filter(sighting => sighting.datetime ===inputValue);
  
+    // clear data from table
     tbody.html("");  
-  }
 
-  // d3.select()
+    if (filteredData.length === 0) {
+      tbody.text(`No sightings recorded on ${inputValue}.`);
+    }
 
-  // })
-
-  // var inputField = d3.select("#input-field");
-
-  // inputField.on("change", function () {
-
-  //  var text = d3.event.target.value;
-  // })
-
-  
+    else {
+      filteredData.forEach((sighting) => {
+        var row = tbody.append("tr");
+        Object.entries(sighting).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        })
+      })
+    };
+  };
