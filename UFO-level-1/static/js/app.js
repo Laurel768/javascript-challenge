@@ -8,7 +8,7 @@ var tableData = data;
 //to find rows that match user input.
 
 var tbody = d3.select("tbody");
-console.log(data);
+//console.log(data);
 
 data.forEach((sighting) => {
     console.log(sighting);
@@ -17,13 +17,22 @@ data.forEach((sighting) => {
     
     // iterate through keys and values
     Object.entries(sighting).forEach(([key, value]) => {
+
+      //append one cell per sighting
       var cell = row.append("td");
       cell.text(value);
     });
   });
 
+  // select button
   var button = d3.select("#Filter Table");
+
+// select form
   var form = d3.select("#form");
+
+// create event handlers
+  button.on("click", runEnter);
+  form.on("submit",runEnter);
   function runEnter() {
 
      // Prevent the page from refreshing
@@ -38,7 +47,7 @@ data.forEach((sighting) => {
     d3.select()
   }
 
-  // button.on("click", runEnter);
+
 
   // })
 
