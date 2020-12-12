@@ -25,7 +25,7 @@ data.forEach((sighting) => {
   });
 
   // select button
-  var button = d3.select("#Filter Table");
+  var button = d3.select("#filter-btn");
 
 // select form
   var form = d3.select("#form");
@@ -39,15 +39,18 @@ data.forEach((sighting) => {
     d3.event.preventDefault();
   
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#example-form-input");
+    var inputElement = d3.select(".form-control");
 
   // Get the value property of the input element
     var inputValue = inputElement.property("value");
-  
-    d3.select()
+
+   //use input to filter data 
+    var filteredData = data.filter(sighting => sighting.datetime ===inputValue);
+ 
+    tbody.html("");  
   }
 
-
+  // d3.select()
 
   // })
 
@@ -58,4 +61,4 @@ data.forEach((sighting) => {
   //  var text = d3.event.target.value;
   // })
 
-  var filteredData = data.filter((sighting) => sighting.datetime ===inputValue);
+  
